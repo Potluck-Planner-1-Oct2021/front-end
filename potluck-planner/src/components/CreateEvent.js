@@ -5,13 +5,13 @@ import * as yup from 'yup'
     name: yup.string().required('Please provide a name for your event'),
     date: yup.string().required('Please let your guets know when your potluck will be'),
     location: yup.string().required('Please let your guests know where your potluck will be'),
-    // food: ,
+    // food: yup.object(),
     invites: yup.string()
   })
 
 function CreateEvent() {
 
-  const initialFormValues = {name: '', date: '', location: '', food: [], invites: ''}
+  const initialFormValues = {name: 'name', date: '', location: '', food: ['','',''], invites: ''}
 
   const [form,setForm] = useState(initialFormValues)
   const [disabled, setDisabled] = useState(true)
@@ -22,6 +22,13 @@ function CreateEvent() {
     const valueToUse = type === 'checkbox' ? checked : value
     setForm({...form, [name]: valueToUse})
     setFormErrors(name,valueToUse)
+  }
+
+  const changeFood = (event) => {
+    const { name, value} = event.target
+    let newState = form.food.slice()
+    newState[name] = value
+    setForm({...form, food: newState})
   }
 
   const setFormErrors = (name,value) => {
@@ -53,7 +60,9 @@ function CreateEvent() {
         </label>
 
         <label> Suggested Food
-
+          {
+            form.food.map((food, index) => <input onChange={changeFood} value={form.food[index]} name={index} type="text"/>)
+          }
         </label>
 
         <label> Invite Friends (comma-separated list of emails)
