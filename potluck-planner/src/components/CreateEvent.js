@@ -31,6 +31,17 @@ function CreateEvent() {
     setForm({...form, food: newState})
   }
 
+  const addFood = (event) => {
+    event.preventDefault()
+    const newState = form.food.slice()
+    newState.push('')
+    setForm({...form, food: newState})
+  }
+
+  const submit = () => {
+    console.log('submit')
+  }
+
   const setFormErrors = (name,value) => {
     yup.reach(schema,name).validate(value)
         .then(() => setErrors({...errors, [name]: ''}))
@@ -38,12 +49,13 @@ function CreateEvent() {
   }
 
     useEffect(() => {
+      console.log('food: ' + form.food)
       schema.isValid(form).then(valid => setDisabled(!valid))
   }, [form])
 
   return (
     <div className="App">
-      <form>
+      <form onSubmit={submit}>
         <div>{errors.name}</div>
         <div>{errors.date}</div>
         <div>{errors.location}</div>
@@ -64,6 +76,7 @@ function CreateEvent() {
             form.food.map((food, index) => <input onChange={changeFood} value={form.food[index]} name={index} type="text"/>)
           }
         </label>
+        <button onClick={addFood}>Add Another Food Item</button>
 
         <label> Invite Friends (comma-separated list of emails)
           <input onChange={change} value={form.invites} name="invites" type="text"/>
