@@ -1,10 +1,12 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useHistory } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { loginSuccess } from './../actions'
 
 
 
-export default function Login(props) {
+const Login = (props) => {
   
   const [formValues, setFormValues] = useState({ username: "", password: "" });
   const { push } = useHistory()
@@ -20,6 +22,7 @@ export default function Login(props) {
       axios.post('https://potluckaapi.herokuapp.com/api/auth/login', formValues)
       .then(res => {
           localStorage.setItem("token", res.data.token)
+          props.loginSuccess()
           push('/dashboard')
       })
       .catch(err => {
@@ -38,3 +41,5 @@ export default function Login(props) {
     </form>
   );
 }
+
+export default connect(null, { loginSuccess })(Login)

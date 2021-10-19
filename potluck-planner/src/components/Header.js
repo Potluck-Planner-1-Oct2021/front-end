@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 const Header = (props) => {
 
     const { isLoggedin } = props
-
+    console.log(props)
     return(
         <header>
         <h1>Potluck Planner</h1>
@@ -16,7 +16,7 @@ const Header = (props) => {
 
 const mapStateToProps = state => {
     return {
-        isLoggedin: state.isLoggedin
+        isLoggedin: state.isLoggedIn
     }
 }
 
