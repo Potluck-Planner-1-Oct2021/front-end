@@ -17,7 +17,7 @@ export default function Login() {
       e.preventDefault()
       axios.post('https://potluckaapi.herokuapp.com/api/auth/login', formValues)
       .then(res => {
-          console.log(res)
+          localStorage.setItem("token", res.data.token)
       })
       .catch(err => {
           console.log(err.message)
