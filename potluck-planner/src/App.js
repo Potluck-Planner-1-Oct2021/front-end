@@ -10,6 +10,9 @@ import ProtectedRoute from './components/ProtectedRoute'
 function App() {
   return (
     <div className="App">
+    <header>
+      <h1>Potluck Planner</h1>
+    </header>
         {/* <ViewEvent></ViewEvent>
         <Home />
         <Register />
