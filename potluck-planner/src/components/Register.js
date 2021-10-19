@@ -30,18 +30,18 @@ const Register = () => {
   return (
     <div>
       <form onSubmit={handleRegistration}>
-        <label htmlFor="username">Username:
+        <label htmlFor="registration_username">Username:
           <input 
-          id='username'
+          id='registration_username'
           name='username'
           type='text'
           value={formValues.username}
           onChange={handleChange}
           />
         </label>
-        <label htmlFor="password">Password:
+        <label htmlFor="registration_password">Password:
           <input
-          id='password'
+          id='registration_password'
           name='password'
           type='password'
           value={formValues.password}
@@ -52,10 +52,12 @@ const Register = () => {
           <input
           id='email'
           name='email'
-          type='email'/>
+          type='email'
           value={formValues.email}
           onChange={handleChange}
+          />
         </label>
+        <button>Sign Up!</button>
       </form>
     </div>
   );
