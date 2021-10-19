@@ -17,9 +17,19 @@ const Register = () => {
     })
   }
 
+  const handleRegistration = (e) => {
+      e.preventDefault()
+      axios.post('https://potluckaapi.herokuapp.com/api/auth/register', formValues)
+      .then(res => {
+          console.log(res)
+      })
+      .catch(err => 
+        console.log(err))
+  }
+
   return (
     <div>
-      <form>
+      <form onSubmit={handleRegistration}>
         <label htmlFor="username">Username:
           <input 
           id='username'
