@@ -1,9 +1,7 @@
-import logo from './logo.svg';
 import './App.css';
-import { Route, Link, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import Home from './components/Home'
 import CreateEvent from './components/CreateEvent';
-import ViewEvent from './components/ViewEvent'
 import LandingPage from './components/LandingPage'
 import ProtectedRoute from './components/ProtectedRoute'
 import NavBar from './components/NavBar';
@@ -15,10 +13,7 @@ function App() {
       <h1>Potluck Planner</h1>
       <NavBar />
     </header>
-        {/* <ViewEvent></ViewEvent>
-        <Home />
-        <Register />
-        <Login /> */}
+      
     <Switch>
       <ProtectedRoute path ='/create' component={CreateEvent} />
       <ProtectedRoute path='/dashboard' component={Home} />
