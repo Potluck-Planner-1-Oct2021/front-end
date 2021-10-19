@@ -18,6 +18,7 @@ function App() {
         <Register />
         <Login /> */}
     <Switch>
+      <ProtectedRoute path ='/create' component={CreateEvent} />
       <ProtectedRoute path='/dashboard' component={Home} />
       <Route path='/login' component={LandingPage} />
       <Route path='/' component={LandingPage} />
