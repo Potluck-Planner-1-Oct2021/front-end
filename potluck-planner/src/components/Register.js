@@ -15,6 +15,7 @@ const Register = () => {
         ...formValues,
         [e.target.name]: e.target.value
     })
+    console.log(formValues)
   }
 
   const handleRegistration = (e) => {
