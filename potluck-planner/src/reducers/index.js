@@ -1,4 +1,4 @@
-import { LOGIN_SUCCESS, LOGOUT_SUCCESS } from "./../actions";
+import { LOGIN_SUCCESS, LOGOUT_SUCCESS } from './../actions'
 
 const inititalState = {
   isLoggedIn: localStorage.getItem("token"),
