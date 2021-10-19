@@ -4,15 +4,12 @@ import React, {useEffect, useState} from "react";
 //just requests a text string
 //label directs user to provide a comma-separated list of emails
 
-function InviteFriends(props) {
+function InviteFriends() {
 
   const [friendsList,setFriendsList] = useState('')
-  const [editable,setEditable] = useState(props.editable)
 
   const change = (event) => {
-      if(editable){
-        setFriendsList(event.target.value)
-      }
+    setFriendsList(event.target.value)
   }
 
   return (
