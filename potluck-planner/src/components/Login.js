@@ -1,11 +1,13 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { useHistory } from 'react-router-dom';
 
 
 
-export default function Login() {
+export default function Login(props) {
   
   const [formValues, setFormValues] = useState({ username: "", password: "" });
+  const { push } = useHistory()
 
 
   const onChange = (e) => {
@@ -18,6 +20,7 @@ export default function Login() {
       axios.post('https://potluckaapi.herokuapp.com/api/auth/login', formValues)
       .then(res => {
           localStorage.setItem("token", res.data.token)
+          push('/dashboard')
       })
       .catch(err => {
           console.log(err.message)

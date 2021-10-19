@@ -5,6 +5,7 @@ import Home from './components/Home'
 import CreateEvent from './components/CreateEvent';
 import ViewEvent from './components/ViewEvent'
 import LandingPage from './components/LandingPage'
+import ProtectedRoute from './components/ProtectedRoute'
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Register />
         <Login /> */}
     <Switch>
+      <ProtectedRoute path='/dashboard' component={Home} />
       <Route path='/login' component={LandingPage} />
       <Route path='/' component={LandingPage} />
     </Switch>
