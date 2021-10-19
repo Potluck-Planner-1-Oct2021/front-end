@@ -6,12 +6,14 @@ import CreateEvent from './components/CreateEvent';
 import ViewEvent from './components/ViewEvent'
 import LandingPage from './components/LandingPage'
 import ProtectedRoute from './components/ProtectedRoute'
+import NavBar from './components/NavBar';
 
 function App() {
   return (
     <div className="App">
     <header>
       <h1>Potluck Planner</h1>
+      <NavBar />
     </header>
         {/* <ViewEvent></ViewEvent>
         <Home />
