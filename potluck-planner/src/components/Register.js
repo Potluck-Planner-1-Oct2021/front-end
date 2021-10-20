@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { signUpStart, signUpSuccess } from './../actions'
+import { signUpStart, signUpSuccess, signupFail } from './../actions'
 import axios from "axios";
 
 const initialState = {
@@ -9,7 +9,7 @@ const initialState = {
   email: "",
 };
 
-const Register = ({ signUpStart, signUpSuccess, signUpLoading, successMessage }) => {
+const Register = ({ signUpStart, signUpSuccess, signUpLoading, successMessage, signUpErrorMessage, signupFail }) => {
   const [formValues, setFormValues] = useState(initialState);
 
   const handleChange = (e) => {
@@ -20,7 +20,7 @@ const Register = ({ signUpStart, signUpSuccess, signUpLoading, successMessage })
     console.log(formValues)
   }
 
-  const messageInput = 'You have successfully signed up! Please login with your nesly created credentials to start planning your event!'
+  const messageInput = 'You have successfully signed up! Please login with your newly created credentials to start planning your event!'
 
   const handleRegistration = (e) => {
       e.preventDefault()
@@ -29,8 +29,10 @@ const Register = ({ signUpStart, signUpSuccess, signUpLoading, successMessage })
       .then(res => {
           signUpSuccess(messageInput)
       })
-      .catch(err => 
-        console.log(err))
+      .catch(err => {
+        signupFail(`There was an error creating your account: ${err.message}. Please try again.`)
+        console.log(err)
+      })
   }
 
   return (
@@ -67,6 +69,7 @@ const Register = ({ signUpStart, signUpSuccess, signUpLoading, successMessage })
       </form>
       {signUpLoading && <p>Please Wait...</p>}
       {successMessage && <p>{successMessage}</p>}
+      {signUpErrorMessage && <p>{signUpErrorMessage}</p>}
     </div>
   );
 };
@@ -74,8 +77,9 @@ const Register = ({ signUpStart, signUpSuccess, signUpLoading, successMessage })
 const mapStateToProps = state => {
   return {
     signUpLoading: state.signUpLoading,
-    successMessage: state.successMessage
+    successMessage: state.successMessage,
+    signUpErrorMessage: state.signUpErrorMessage,
   }
 }
 
-export default connect(mapStateToProps, { signUpSuccess, signUpStart })(Register);
+export default connect(mapStateToProps, { signUpSuccess, signUpStart, signupFail })(Register);
