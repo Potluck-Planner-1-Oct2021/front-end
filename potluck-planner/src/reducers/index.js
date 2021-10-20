@@ -4,13 +4,17 @@ import {
   SIGNUP_START,
   LOGIN_START,
   SIGNUP_SUCCESS,
+  LOGIN_FAIL,
+  SIGNUP_FAIL,
 } from "./../actions";
 
 const inititalState = {
   isLoggedIn: localStorage.getItem("token"),
   loginLoading: false,
+  loginErrorMessage: "",
   signupLoading: false,
-  successMessage: '',
+  signUpErrorMessage: "",
+  successMessage: "",
 };
 
 export const reducer = (state = inititalState, action) => {
@@ -26,6 +30,12 @@ export const reducer = (state = inititalState, action) => {
         isLoggedIn: true,
         loginLoading: false,
       };
+    case LOGIN_FAIL:
+      return {
+        ...state,
+        loginLoading: false,
+        loginErrorMessage: action.payload,
+      };
     case LOGOUT_SUCCESS:
       return {
         ...state,
@@ -36,12 +46,18 @@ export const reducer = (state = inititalState, action) => {
         ...state,
         signupLoading: true,
       };
-      case SIGNUP_SUCCESS: 
+    case SIGNUP_SUCCESS:
       return {
         ...state,
         signupLoading: false,
-        successMessage: action.payload
-      }
+        successMessage: action.payload,
+      };
+    case SIGNUP_FAIL:
+      return {
+        ...state,
+        signupLoading: false,
+        signUpErrorMessage: action.payload,
+      };
     default:
       return state;
   }
