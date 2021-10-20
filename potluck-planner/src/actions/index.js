@@ -2,6 +2,7 @@ export const LOGIN_SUCCESS = "LOGIN_SUCCESS"
 export const LOGOUT_SUCCESS = "LOGOUT"
 export const LOGIN_START = "LOGIN_START"
 export const SIGNUP_START = "SIGNUP_START"
+export const SIGNUP_SUCCESS = "SIGNUP_SUCCESS"
 
 export const loginSuccess = () => {
     return({type: LOGIN_SUCCESS});
@@ -17,4 +18,8 @@ export const loginStart = () => {
 
 export const signUpStart = () => {
     return({type: SIGNUP_START})
+}
+
+export const signUpSuccess = (message) => {
+    return({type: SIGNUP_SUCCESS, payload: message})
 }
