@@ -23,12 +23,14 @@ export const reducer = (state = inititalState, action) => {
       return {
         ...state,
         loginLoading: true,
+        loginErrorMessage: '',
       };
     case LOGIN_SUCCESS:
       return {
         ...state,
         isLoggedIn: true,
         loginLoading: false,
+        loginErrorMessage: ''
       };
     case LOGIN_FAIL:
       return {
