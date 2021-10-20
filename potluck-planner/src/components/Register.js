@@ -25,7 +25,7 @@ const Register = ({ signUpStart, signUpSuccess, signUpLoading, successMessage, s
   const handleRegistration = (e) => {
       e.preventDefault()
       signUpStart()
-      axios.post('https://potluckaapi.herokuapp.com/api/auth/register', formValues)
+      axios.post('https://potluckaapi.herokuapp.com/api/users/register', formValues)
       .then(res => {
           signUpSuccess(messageInput)
       })
