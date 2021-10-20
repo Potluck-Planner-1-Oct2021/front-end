@@ -6,7 +6,7 @@ import Register from './Register'
 
 const LandingPage = (props) => {
     const [showSignup, setShowSignup] = useState(false)
-    const { landingLoading } = props
+    const { loginLoading, signupLoading } = props
 
     const toggleShowSignUp = () => {
         setShowSignup(!showSignup)
@@ -18,17 +18,19 @@ const LandingPage = (props) => {
         In the world of social gatherings and potlucks the "Potluck Planner" is king. This is your place for all things pot luck.</h2>
         <h3>Login:</h3>
         <Login />
-        {landingLoading && <p>Loading...</p>}
+        {loginLoading && <p>Loading...</p>}
         <h3>Don't have an account yet?</h3>
         <button onClick={toggleShowSignUp}>Start creating events now!</button>
         {showSignup ? <Register /> : null}
+        {signupLoading && <p>Loading...</p>}
         </>
     )
 }
 
 const mapStateToProps = state => {
     return{
-        landingLoading: state.landingLoading
+        loginLoading: state.loginLoading,
+        signupLoading: state.signupLoading,
     }
 }
 

@@ -2,16 +2,17 @@ import { LOGIN_SUCCESS, LOGOUT_SUCCESS, SIGNUP_START, LOGIN_START } from './../a
 
 const inititalState = {
   isLoggedIn: localStorage.getItem("token"),
-  landingLoading: false,
+  loginLoading: false,
+  signupLoading: false
 };
 
 export const reducer = (state = inititalState, action) => {
   switch (action.type) {
-    case (LOGIN_START || SIGNUP_START): 
+    case LOGIN_START: 
       return {
         ...state,
-        landingLoading: true
-      }
+        loginLoading: true
+      };
     case LOGIN_SUCCESS:
       return {
         ...state,
@@ -22,6 +23,11 @@ export const reducer = (state = inititalState, action) => {
         ...state,
         isLoggedIn: false,
       };
+      case SIGNUP_START:
+        return {
+          ...state,
+          signupLoading: true,
+        }
     default:
       return state;
   }
