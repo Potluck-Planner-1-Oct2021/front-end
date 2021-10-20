@@ -2,11 +2,11 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { loginSuccess } from './../actions'
+import { loginStart, loginSuccess } from './../actions'
 
 
 
-const Login = (props) => {
+const Login = ({loginStart, loginSuccess}) => {
   
   const [formValues, setFormValues] = useState({ username: "", password: "" });
   const { push } = useHistory()
@@ -19,10 +19,11 @@ const Login = (props) => {
 
   const handleLogin = (e) => {
       e.preventDefault()
+      loginStart()
       axios.post('https://potluckaapi.herokuapp.com/api/auth/login', formValues)
       .then(res => {
           localStorage.setItem("token", res.data.token)
-          props.loginSuccess()
+          loginSuccess()
           push('/dashboard')
       })
       .catch(err => {
@@ -42,4 +43,4 @@ const Login = (props) => {
   );
 }
 
-export default connect(null, { loginSuccess })(Login)
+export default connect(null, { loginStart, loginSuccess })(Login)

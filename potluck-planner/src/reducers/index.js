@@ -17,6 +17,7 @@ export const reducer = (state = inititalState, action) => {
       return {
         ...state,
         isLoggedIn: true,
+        loginLoading: false
       };
     case LOGOUT_SUCCESS:
       return {

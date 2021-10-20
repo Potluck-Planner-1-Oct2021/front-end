@@ -11,4 +11,10 @@ export const logoutSuccess = () => {
     return({type: LOGOUT_SUCCESS})
 }
 
-export const loginStart = ()
+export const loginStart = () => {
+    return({type: LOGIN_START})
+}
+
+export const signUpStart = () => {
+    return({type: SIGNUP_START})
+}
