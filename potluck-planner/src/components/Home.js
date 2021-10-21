@@ -14,6 +14,7 @@ const StyledP = styled.h2`
 const HostedDiv = styled.div`
     display: flex;
     justify-content: space-evenly;
+    flex-wrap: wrap;
 `
 const AttendDiv = styled.div`
     display: flex;
@@ -24,6 +25,8 @@ const AllP = styled.div`
     padding: 4%;
     background-color: #105773;
     color: #f2b441;
+    width: max-content;
+    margin-bottom: 1em;
 `
 
 const Home = ({ potlucks, getHostedEvents }) => {

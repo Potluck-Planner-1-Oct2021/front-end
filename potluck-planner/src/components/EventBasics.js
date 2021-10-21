@@ -1,4 +1,4 @@
-import React, {  useState } from "react";
+import React, {  useEffect, useState } from "react";
 // import * as yup from 'yup'
 
 // This component shows name, date/time, and location
@@ -21,14 +21,19 @@ function EventBasics({ formToSubmit, setFormToSubmit }) {
   // const [editable,setEditable] = useState(props.editable)
   // const [errors, setErrors] = useState({name: '', date: '', location: ''})
 
-  const change = async (event) => {
+  const updateForm = (form) => {
+    setFormToSubmit({...formToSubmit, potluck_name: form.name, date: form.date, time: form.time, location: form.location})
+  }
+
+  const change = (event) => {
     // if(editable) <= need to fix that
         const { name, value } = event.target
         setForm({...form, [name]: value})
         // setFormErrors(name, value)
-        setFormToSubmit({...formToSubmit, potluck_name: form.name, date: form.date, time: form.time, location: form.location})
+        updateForm(form)
     // }
   }
+ 
 
   // useEffect(() => {
   //   setFormToSubmit({...formToSubmit, potluck_name: form.name, date: form.date, time: form.time, location: form.location})
