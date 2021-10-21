@@ -1,8 +1,10 @@
+import axios from "axios";
 import React, {useEffect, useState} from "react";
 import * as yup from 'yup'
 import CreateFood from "./CreateFood";
 import EventBasics from "./EventBasics";
 import InviteFriends from "./InviteFriends";
+import axiosWithAuth from "./../utils/axiosWithAuth"
 
 const initialFormState = {
   potluck_name: "",
@@ -18,7 +20,9 @@ function CreateEvent() {
   const [disabled, setDisabled] = useState(true)
   const [formToSubmit, setFormToSubmit] = useState(initialFormState)
 
-  console.log(formToSubmit)
+  const submitEvent = () => {
+    axiosWithAuth()
+  }
 
   return (
     <div className="App">
