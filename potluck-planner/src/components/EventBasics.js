@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, { useState } from "react";
 import * as yup from 'yup'
 
 // This component shows name, date/time, and location
@@ -25,7 +25,7 @@ function EventBasics(props) {
     if(editable){
         const { name, type, value} = event.target
         setForm({...form, [name]: value})
-        setFormErrors(name,value)
+        setFormErrors(name, value)
     }
   }
 
@@ -46,11 +46,11 @@ function EventBasics(props) {
         </label>
 
         <label> Date and Time
-          <input onChange={change} value={form.date} name="date" type="text"/>
+          <input onChange={change} value={form.date} name="date" type="date"/>
         </label> 
 
         <label> Location
-          <input onChange={change} value={form.location} name="location" type="text"/>
+          <input onChange={change} value={form.location} name="location" type="time"/>
         </label>
       </form>
     </div>
