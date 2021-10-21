@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
 import styled from 'styled-components';
-import axiosWithAuth from '../utils/axiosWithAuth';
+import { getHostedEvents } from './../actions/eventActions'
 
 const HomeDiv = styled.div`
     width: 100%;
@@ -24,25 +25,21 @@ const AllP = styled.p`
     color: #f2b441;
 `
 
-export default function Home () {
+const Home = ({ potlucks, getHostedEvents }) => {
 
     useEffect(() => {
-    axiosWithAuth()
-    .get('/potlucks')
-    .then(res => {
-        console.log(res)
-    })
-    .catch(err => {
-        console.log(err)
-    })
-}, [])
+    getHostedEvents()
+}, [getHostedEvents])
 
     return (
         <HomeDiv>
             <StyledP> Events Hosting </StyledP>
             <HostedDiv>
-                <AllP>Event A</AllP>
-                <AllP>Event B</AllP>
+                {potlucks.map(pl => {
+                    return <AllP key={pl.id}>{pl.potluck_name}</AllP>
+                })}
+                {/* <AllP>Event A</AllP>
+                <AllP>Event B</AllP> */}
             </HostedDiv>
             <StyledP> Events Attending </StyledP>
             <AttendDiv>
@@ -53,3 +50,11 @@ export default function Home () {
         </HomeDiv>
     );
 }
+
+const mapStateToProps = state => {
+    return {
+        potlucks: state.eventState.potlucks
+    }
+}
+
+export default connect(mapStateToProps, { getHostedEvents })(Home);
