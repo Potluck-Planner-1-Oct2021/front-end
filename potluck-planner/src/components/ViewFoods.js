@@ -9,7 +9,7 @@ import ViewFood from "./ViewFood";
 
 function ViewFoods(props) {
 
-  const [changeAll,setChangeAll] = useState(props.changeAll)
+  // const [changeAll,setChangeAll] = useState(props.changeAll)
   const [items,setItems] = useState(sampleItems)
 
   const addFood = (event) => {

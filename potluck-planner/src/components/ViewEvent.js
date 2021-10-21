@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, { useState } from "react";
 import EventBasics from "./EventBasics";
 import InviteFriends from "./InviteFriends";
 import RSVP from "./RSVP";
