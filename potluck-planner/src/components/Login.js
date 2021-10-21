@@ -20,7 +20,7 @@ const Login = ({loginStart, loginSuccess, loginFail, loginErrorMessage}) => {
   const handleLogin = (e) => {
       e.preventDefault()
       loginStart()
-      axios.post('https://potluckaapi.herokuapp.com/api/auth/login', formValues)
+      axios.post('https://potluckaapi.herokuapp.com/api/users/login', formValues)
       .then(res => {
           localStorage.setItem("token", res.data.token)
           loginSuccess()

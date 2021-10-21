@@ -1,22 +1,21 @@
-import React, {useEffect, useState} from "react";
-import * as yup from 'yup'
-import EventBasics from "./EventBasics";
+import React, { useState } from "react";
 
 // not required
 // starts off with 3 empty boxes to input food
 // user can push button to add additional boxes
 // food items are contained in an array
 
-function CreateFood() {
+
+function CreateFood({ formToSubmit, setFormToSubmit }) {
 
   const [food,setFood] = useState(['','',''])
-
 
   const changeFood = (event) => {
     const { name, value} = event.target
     let newState = food.slice()
     newState[name].concat(value)
     setFood(newState)
+    setFormToSubmit({...formToSubmit, foods: food})
   }
 
   const addFood = (event) => {
