@@ -4,9 +4,11 @@ import styled from 'styled-components';
 const HomeDiv = styled.div`
     width: 100%;
     height: 100%;
+    background-color: #105773;
+    color: #f2b441;
 `
 const StyledP = styled.h2`
-    text-color: blue;
+    text-color: #f2b441;
 `
 const HostedDiv = styled.div`
     display: flex;
