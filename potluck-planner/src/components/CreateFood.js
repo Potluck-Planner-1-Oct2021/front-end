@@ -29,7 +29,7 @@ function CreateFood({ formToSubmit, setFormToSubmit }) {
     <div className="App">
         <label> Suggested Food
           {
-            food.map((food, index) => <input onChange={changeFood} value={food[index]} name={index} type="text"/>)
+            food.map((food, index) => <input key={index} onChange={changeFood} value={food[index]} name={index} type="text"/>)
           }
         </label>
         <button onClick={addFood}>Add Another Food Item</button>

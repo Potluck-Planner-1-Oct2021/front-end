@@ -1,6 +1,7 @@
 import axiosWithAuth from "../utils/axiosWithAuth"
 
 export const FETCH_HOSTING_SUCCESS = "FETCH_HOSTING_SUCCESS"
+export const DELETE_EVENT_SUCCESS = "DELETE_EVENT_SUCCESS"
 
 export const getHostedEvents = () => {
     return (dispatch) => {
@@ -15,6 +16,15 @@ export const getHostedEvents = () => {
     }
 }
 
+export const deleteHostedEvent = (id) => {
+    axiosWithAuth()
+    .delete(`/${id}`)
+    .then(res => {
+        console.log(res)
+    })
+}
+
 export const hostedSuccess = (events) => {
     return({type: FETCH_HOSTING_SUCCESS, payload: events})
 }
+

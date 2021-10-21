@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import { getHostedEvents } from './../actions/eventActions'
+import { getHostedEvents, deleteHostedEvent } from './../actions/eventActions'
 import moment from 'moment';
+import axiosWithAuth from './../utils/axiosWithAuth'
 
 const HomeDiv = styled.div`
     width: 100%;
@@ -29,11 +30,20 @@ const AllP = styled.div`
     margin-bottom: 1em;
 `
 
-const Home = ({ potlucks, getHostedEvents }) => {
+const Home = ({ potlucks, getHostedEvents, deleteHostedEvent }) => {
 
     useEffect(() => {
     getHostedEvents()
 }, [getHostedEvents])
+
+const deleteEvent = (id) => {
+    // deleteHostedEvent(id)
+    axiosWithAuth()
+    .delete(`/potlucks/${id}`)
+    .then(res => {
+        console.log(res)
+    })
+}
 
     return (
         <HomeDiv>
@@ -44,7 +54,8 @@ const Home = ({ potlucks, getHostedEvents }) => {
                             <p>{pl.potluck_name}</p>
                             <p>Date: {moment(pl.date).format('MM/DD/YYYY')}</p>
                             <p>Time: {moment(pl.time, "HH:mm:ss").format('h:mm a')}</p>
-                            <p>{pl.location}</p>
+                            <p>Location: {pl.location}</p>
+                            <button onClick={() => {deleteEvent(pl.potluck_id)}}>Delete</button>
                             </AllP>
                 })}
                 {/* <AllP>Event A</AllP>
@@ -66,4 +77,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, { getHostedEvents })(Home);
+export default connect(mapStateToProps, { getHostedEvents, deleteHostedEvent })(Home);
