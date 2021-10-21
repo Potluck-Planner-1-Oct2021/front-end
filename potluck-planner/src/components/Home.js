@@ -36,7 +36,7 @@ const Home = ({ potlucks, getHostedEvents }) => {
             <StyledP> Events Hosting </StyledP>
             <HostedDiv>
                 {potlucks.map(pl => {
-                    return <AllP key={pl.id}>{pl.potluck_name}</AllP>
+                    return <AllP key={pl.potluck_id}>{pl.potluck_name}</AllP>
                 })}
                 {/* <AllP>Event A</AllP>
                 <AllP>Event B</AllP> */}
