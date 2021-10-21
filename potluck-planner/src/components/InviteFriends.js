@@ -1,8 +1,33 @@
 import React, { useState } from "react";
+import styled from 'styled-components'
 
 //not required
 //just requests a text string
 //label directs user to provide a comma-separated list of emails
+
+const LabelInputDiv = styled.div`
+  display: flex;
+  justify-content: space-between;
+  //border: 1px solid red;
+  width: 40%;
+  padding-left: 1%;
+`
+
+const LabelDiv = styled.div`
+  //border: 1px solid green;
+  width: 50%;
+  text-align: left;
+`
+
+const InputDiv = styled.div`
+  //border: 1px solid purple;//
+
+`
+
+const StyledLabel = styled.label`
+//border: 2px solid blue;
+display: block;
+`
 
 function InviteFriends({ formToSubmit, setFormToSubmit }) {
 
@@ -17,9 +42,14 @@ function InviteFriends({ formToSubmit, setFormToSubmit }) {
   return (
     <div className="App">
       <form>
-        <label> Invite Friends (comma-separated list of emails)
+        <LabelInputDiv>
+          <LabelDiv>
+            <label> Invite Friends</label>
+            <label> (comma-separated list of emails)</label>
+          </LabelDiv>
           <input onChange={change} value={friendsList} name="friendsList" type="text"/>
-        </label>
+        
+        </LabelInputDiv>
       </form>
     </div>
   );
