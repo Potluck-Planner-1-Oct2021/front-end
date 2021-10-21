@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { getHostedEvents } from './../actions/eventActions'
+import moment from 'moment';
 
 const HomeDiv = styled.div`
     width: 100%;
@@ -18,7 +19,7 @@ const AttendDiv = styled.div`
     display: flex;
     justify-content: space-evenly;
 `
-const AllP = styled.p`
+const AllP = styled.div`
     border: 1px solid orange;
     padding: 4%;
     background-color: #105773;
@@ -36,7 +37,12 @@ const Home = ({ potlucks, getHostedEvents }) => {
             <StyledP> Events Hosting </StyledP>
             <HostedDiv>
                 {potlucks.map(pl => {
-                    return <AllP key={pl.potluck_id}>{pl.potluck_name}</AllP>
+                    return <AllP key={pl.potluck_id}>
+                            <p>{pl.potluck_name}</p>
+                            <p>{moment(pl.date).format('MM/DD/YYYY')}</p>
+                            <p>{pl.time}</p>
+                            <p>{pl.location}</p>
+                            </AllP>
                 })}
                 {/* <AllP>Event A</AllP>
                 <AllP>Event B</AllP> */}
