@@ -4,6 +4,7 @@ import EventBasics from "./EventBasics";
 import InviteFriends from "./InviteFriends";
 import { connect } from 'react-redux';
 import { addHostedEvent } from './../actions/eventActions'
+import { useHistory } from 'react-router-dom';
 
 
 const initialFormState = {
@@ -20,9 +21,12 @@ function CreateEvent({ addHostedEvent }) {
   const [disabled, setDisabled] = useState(false)
   const [formToSubmit, setFormToSubmit] = useState(initialFormState)
 
+  const { push } = useHistory()
+
  
   const submitEvent = () => {
     addHostedEvent(formToSubmit)
+    push('/dashboard')
   }
 
   return (
