@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import * as yup from 'yup'
+import React, { useEffect, useState } from "react";
+// import * as yup from 'yup'
 
 // This component shows name, date/time, and location
 // All are text values
@@ -7,11 +7,11 @@ import * as yup from 'yup'
 // Uses editable state to allow inputs to be changed or not. Editable is passed down through props.
 // Should later add CSS to gray out inputs when not editable
 
-  const schema =yup.object().shape({
-    name: yup.string().required('Please provide a name for your event'),
-    date: yup.string().required('Please let your guets know when your potluck will be'),
-    location: yup.string().required('Please let your guests know where your potluck will be'),
-  })
+  // const schema =yup.object().shape({
+  //   name: yup.string().required('Please provide a name for your event'),
+  //   date: yup.string().required('Please let your guets know when your potluck will be'),
+  //   location: yup.string().required('Please let your guests know where your potluck will be'),
+  // })
 
 function EventBasics({ formToSubmit, setFormToSubmit }) {
 
@@ -25,10 +25,13 @@ function EventBasics({ formToSubmit, setFormToSubmit }) {
     // if(editable) <= need to fix that
         const { name, value } = event.target
         setForm({...form, [name]: value})
-        setFormToSubmit({...formToSubmit, potluck_name: form.name, date: form.date, time: form.time, location: form.location})
         // setFormErrors(name, value)
     // }
   }
+
+  useEffect(() => {
+    setFormToSubmit({...formToSubmit, potluck_name: form.name, date: form.date, time: form.time, location: form.location})
+  }, [form, formToSubmit, setFormToSubmit])
 
   //We need to add time to schema
 

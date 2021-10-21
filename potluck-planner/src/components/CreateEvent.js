@@ -1,6 +1,4 @@
-import axios from "axios";
-import React, {useEffect, useState} from "react";
-import * as yup from 'yup'
+import React, { useState } from "react";
 import CreateFood from "./CreateFood";
 import EventBasics from "./EventBasics";
 import InviteFriends from "./InviteFriends";
@@ -20,6 +18,7 @@ function CreateEvent() {
   const [disabled, setDisabled] = useState(false)
   const [formToSubmit, setFormToSubmit] = useState(initialFormState)
 
+  console.log(formToSubmit)
   const submitEvent = () => {
     axiosWithAuth()
     .post('/potlucks', formToSubmit)
@@ -30,7 +29,7 @@ function CreateEvent() {
 
   return (
     <div className="App">
-        <EventBasics editable={false} setFormToSubmit={setFormToSubmit} formToSubmit={formToSubmit}></EventBasics>
+        <EventBasics editable={false} setDisable= {setDisabled} setFormToSubmit={setFormToSubmit} formToSubmit={formToSubmit}></EventBasics>
         <CreateFood setFormToSubmit={setFormToSubmit} formToSubmit={formToSubmit}></CreateFood>
         <InviteFriends setFormToSubmit={setFormToSubmit} formToSubmit={formToSubmit}></InviteFriends>
         <button onClick={submitEvent} disabled={disabled}>Submit</button>
