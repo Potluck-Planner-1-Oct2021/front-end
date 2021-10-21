@@ -61,7 +61,7 @@ function CreateFood({ formToSubmit, setFormToSubmit }) {
         </LabelDiv>
         <BoxesDiv>
           {
-            food.map((food, index) => <StyledInput onChange={changeFood} value={food[index]} name={index} type="text"/>)
+            food.map((food, index) => <StyledInput key={index} onChange={changeFood} value={food[index]} name={index} type="text"/>)
           }
           <button onClick={addFood}>Add Another Food Item</button>
         </BoxesDiv>

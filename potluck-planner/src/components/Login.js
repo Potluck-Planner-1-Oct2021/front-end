@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { loginStart, loginSuccess, loginFail } from './../actions'
+import { loginStart, loginSuccess, loginFail } from './../actions/landingActions'
 
 
 
@@ -49,7 +49,7 @@ const Login = ({loginStart, loginSuccess, loginFail, loginErrorMessage}) => {
 
 const mapStateToProps = state => {
   return {
-    loginErrorMessage: state.loginErrorMessage
+    loginErrorMessage: state.landingState.loginErrorMessage
   }
 }
 
