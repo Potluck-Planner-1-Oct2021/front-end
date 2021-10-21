@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { getHostedEvents, deleteHostedEvent } from './../actions/eventActions'
 import moment from 'moment';
-import axiosWithAuth from './../utils/axiosWithAuth'
 
 const HomeDiv = styled.div`
     width: 100%;

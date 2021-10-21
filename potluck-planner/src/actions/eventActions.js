@@ -26,6 +26,16 @@ export const deleteHostedEvent = (id) => {
   };
 };
 
+export const addHostedEvent = (event) => {
+    return (dispatch) => {
+        axiosWithAuth()
+        .post('/potlucks', event)
+        .then(res => {
+          console.log(res.data)
+        })
+    }
+}
+
 export const hostedSuccess = (events) => {
   return { type: FETCH_HOSTING_SUCCESS, payload: events };
 };

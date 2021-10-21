@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import CreateFood from "./CreateFood";
 import EventBasics from "./EventBasics";
 import InviteFriends from "./InviteFriends";
-import axiosWithAuth from "./../utils/axiosWithAuth"
+import { connect } from 'react-redux';
+import { addHostedEvent } from './../actions/eventActions'
+
 
 const initialFormState = {
   potluck_name: "",
@@ -13,18 +15,14 @@ const initialFormState = {
         foods: []
 }
 
-function CreateEvent() {
+function CreateEvent({ addHostedEvent }) {
 
   const [disabled, setDisabled] = useState(false)
   const [formToSubmit, setFormToSubmit] = useState(initialFormState)
 
-  console.log(formToSubmit)
+ 
   const submitEvent = () => {
-    axiosWithAuth()
-    .post('/potlucks', formToSubmit)
-    .then(res => {
-      console.log(res.data)
-    })
+    addHostedEvent(formToSubmit)
   }
 
   return (
@@ -37,4 +35,4 @@ function CreateEvent() {
   );
 }
 
-export default CreateEvent;
+export default connect (null, { addHostedEvent })(CreateEvent);
