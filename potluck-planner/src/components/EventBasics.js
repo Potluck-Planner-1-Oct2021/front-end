@@ -15,7 +15,7 @@ import * as yup from 'yup'
 
 function EventBasics(props) {
 
-  const initialFormValues = {name: 'name', date: '', location: ''}
+  const initialFormValues = {name: '', date: '', location: '', time: ''}
 
   const [form, setForm] = useState(initialFormValues)
   const [editable,setEditable] = useState(props.editable)
@@ -45,10 +45,12 @@ function EventBasics(props) {
             <input onChange={change} value={form.name} name="name" type="text"/>
         </label>
 
-        <label> Date and Time
+        <label> Date
           <input onChange={change} value={form.date} name="date" type="date"/>
         </label> 
-
+        <label> Time
+          <input onChange={change} value={form.time} name="time" type="time"/>
+        </label> 
         <label> Location
           <input onChange={change} value={form.location} name="location" type="text"/>
         </label>
