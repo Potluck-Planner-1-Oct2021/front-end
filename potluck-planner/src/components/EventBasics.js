@@ -31,7 +31,7 @@ function EventBasics({ formToSubmit, setFormToSubmit }) {
 
   useEffect(() => {
     setFormToSubmit({...formToSubmit, potluck_name: form.name, date: form.date, time: form.time, location: form.location})
-  }, [form, formToSubmit, setFormToSubmit])
+  }, [form])
 
   //We need to add time to schema
 
