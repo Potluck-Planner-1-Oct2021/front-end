@@ -13,34 +13,37 @@ import * as yup from 'yup'
     location: yup.string().required('Please let your guests know where your potluck will be'),
   })
 
-function EventBasics(props) {
+function EventBasics({ formToSubmit, setFormToSubmit }) {
 
   const initialFormValues = {name: '', date: '', location: '', time: ''}
 
   const [form, setForm] = useState(initialFormValues)
-  const [editable,setEditable] = useState(props.editable)
-  const [errors, setErrors] = useState({name: '', date: '', location: ''})
+  // const [editable,setEditable] = useState(props.editable)
+  // const [errors, setErrors] = useState({name: '', date: '', location: ''})
 
   const change = (event) => {
     // if(editable) <= need to fix that
         const { name, value } = event.target
         setForm({...form, [name]: value})
-        setFormErrors(name, value)
+        setFormToSubmit({...formToSubmit, potluck_name: form.name, date: form.date, time: form.time, location: form.location})
+        // setFormErrors(name, value)
     // }
   }
 
-  const setFormErrors = (name,value) => {
-    yup.reach(schema,name).validate(value)
-        .then(() => setErrors({...errors, [name]: ''}))
-        .catch( err => setErrors({...errors, [name]: err.errors[0]}))
-  }
+  //We need to add time to schema
+
+  // const setFormErrors = (name,value) => {
+  //   yup.reach(schema,name).validate(value)
+  //       .then(() => setErrors({...errors, [name]: ''}))
+  //       .catch( err => setErrors({...errors, [name]: err.errors[0]}))
+  // }
 
   return (
     <div className="App">
       <form>
-        <div>{errors.name}</div>
+        {/* <div>{errors.name}</div>
         <div>{errors.date}</div>
-        <div>{errors.location}</div>
+        <div>{errors.location}</div> */}
         <label> Event Name
             <input onChange={change} value={form.name} name="name" type="text"/>
         </label>

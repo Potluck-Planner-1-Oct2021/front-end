@@ -18,11 +18,13 @@ function CreateEvent() {
   const [disabled, setDisabled] = useState(true)
   const [formToSubmit, setFormToSubmit] = useState(initialFormState)
 
+  console.log(formToSubmit)
+
   return (
     <div className="App">
-        <EventBasics editable={false}></EventBasics>
-        <CreateFood></CreateFood>
-        <InviteFriends></InviteFriends>
+        <EventBasics editable={false} setFormToSubmit={setFormToSubmit} formToSubmit={formToSubmit}></EventBasics>
+        <CreateFood setFormToSubmit={setFormToSubmit} formToSubmit={formToSubmit}></CreateFood>
+        <InviteFriends setFormToSubmit={setFormToSubmit} formToSubmit={formToSubmit}></InviteFriends>
         <button disabled={disabled}>Submit</button>
     </div>
   );

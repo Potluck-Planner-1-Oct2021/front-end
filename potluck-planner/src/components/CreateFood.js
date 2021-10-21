@@ -7,7 +7,7 @@ import EventBasics from "./EventBasics";
 // user can push button to add additional boxes
 // food items are contained in an array
 
-function CreateFood() {
+function CreateFood({ formToSubmit, setFormToSubmit }) {
 
   const [food,setFood] = useState(['','',''])
 

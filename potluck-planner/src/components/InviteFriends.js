@@ -4,7 +4,7 @@ import React, { useState } from "react";
 //just requests a text string
 //label directs user to provide a comma-separated list of emails
 
-function InviteFriends() {
+function InviteFriends({ formToSubmit, setFormToSubmit }) {
 
   const [friendsList,setFriendsList] = useState('')
 
