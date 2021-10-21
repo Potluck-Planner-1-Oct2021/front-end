@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { signUpStart, signUpSuccess, signupFail } from './../actions'
+import { signUpStart, signUpSuccess, signupFail } from './../actions/landingActions'
 import axios from "axios";
 
 const initialState = {
@@ -76,9 +76,9 @@ const Register = ({ signUpStart, signUpSuccess, signUpLoading, successMessage, s
 
 const mapStateToProps = state => {
   return {
-    signUpLoading: state.signUpLoading,
-    successMessage: state.successMessage,
-    signUpErrorMessage: state.signUpErrorMessage,
+    signUpLoading: state.landingState.signUpLoading,
+    successMessage: state.landingState.successMessage,
+    signUpErrorMessage: state.landingState.signUpErrorMessage,
   }
 }
 

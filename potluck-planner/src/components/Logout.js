@@ -1,6 +1,6 @@
 import {  useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { logoutSuccess } from './../actions'
+import { logoutSuccess } from './../actions/landingActions'
 
 const Logout = (props) => {
     console.log('props', props)

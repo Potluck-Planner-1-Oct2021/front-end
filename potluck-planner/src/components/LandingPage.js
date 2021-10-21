@@ -39,8 +39,8 @@ const LandingPage = (props) => {
 
 const mapStateToProps = state => {
     return{
-        loginLoading: state.loginLoading,
-        signupLoading: state.signupLoading,
+        loginLoading: state.landingState.loginLoading,
+        signupLoading: state.landingState.signupLoading,
     }
 }
 
