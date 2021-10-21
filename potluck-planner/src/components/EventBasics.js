@@ -17,16 +17,16 @@ function EventBasics(props) {
 
   const initialFormValues = {name: 'name', date: '', location: ''}
 
-  const [form,setForm] = useState(initialFormValues)
+  const [form, setForm] = useState(initialFormValues)
   const [editable,setEditable] = useState(props.editable)
   const [errors, setErrors] = useState({name: '', date: '', location: ''})
 
   const change = (event) => {
-    if(editable){
-        const { name, type, value} = event.target
+    // if(editable) <= need to fix that
+        const { name, value } = event.target
         setForm({...form, [name]: value})
         setFormErrors(name, value)
-    }
+    // }
   }
 
   const setFormErrors = (name,value) => {
@@ -50,7 +50,7 @@ function EventBasics(props) {
         </label> 
 
         <label> Location
-          <input onChange={change} value={form.location} name="location" type="time"/>
+          <input onChange={change} value={form.location} name="location" type="text"/>
         </label>
       </form>
     </div>
