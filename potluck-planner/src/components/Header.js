@@ -11,7 +11,7 @@ const StyledHeader = styled.header`
 const Header = (props) => {
 
     const { isLoggedin } = props
-    console.log(props)
+    
     return(
         <StyledHeader>
         <h1>Potluck Planner</h1>
@@ -22,7 +22,7 @@ const Header = (props) => {
 
 const mapStateToProps = state => {
     return {
-        isLoggedin: state.isLoggedIn
+        isLoggedin: state.landingState.isLoggedIn
     }
 }
 
