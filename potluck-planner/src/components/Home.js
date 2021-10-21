@@ -37,12 +37,8 @@ const Home = ({ potlucks, getHostedEvents, deleteHostedEvent }) => {
 }, [getHostedEvents])
 
 const deleteEvent = (id) => {
-    // deleteHostedEvent(id)
-    axiosWithAuth()
-    .delete(`/potlucks/${id}`)
-    .then(res => {
-        console.log(res)
-    })
+    deleteHostedEvent(id)
+   
 }
 
     return (

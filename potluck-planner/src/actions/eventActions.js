@@ -1,30 +1,35 @@
-import axiosWithAuth from "../utils/axiosWithAuth"
+import axiosWithAuth from "../utils/axiosWithAuth";
 
-export const FETCH_HOSTING_SUCCESS = "FETCH_HOSTING_SUCCESS"
-export const DELETE_EVENT_SUCCESS = "DELETE_EVENT_SUCCESS"
+export const FETCH_HOSTING_SUCCESS = "FETCH_HOSTING_SUCCESS";
+export const DELETE_EVENT_SUCCESS = "DELETE_EVENT_SUCCESS";
 
 export const getHostedEvents = () => {
-    return (dispatch) => {
-        axiosWithAuth()
-    .get('/potlucks')
-    .then(res => {
-        dispatch(hostedSuccess(res.data))
-    })
-    .catch(err => {
-        console.log(err)
-    })
-    }
-}
+  return (dispatch) => {
+    axiosWithAuth()
+      .get("/potlucks")
+      .then((res) => {
+        dispatch(hostedSuccess(res.data));
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+};
 
 export const deleteHostedEvent = (id) => {
+  return (dispatch) => {
     axiosWithAuth()
-    .delete(`/${id}`)
-    .then(res => {
-        console.log(res)
-    })
-}
+      .delete(`/potlucks/${id}`)
+      .then((res) => {
+        dispatch(deleteSuccess(res.data.potluck_id))
+      });
+  };
+};
 
 export const hostedSuccess = (events) => {
-    return({type: FETCH_HOSTING_SUCCESS, payload: events})
-}
+  return { type: FETCH_HOSTING_SUCCESS, payload: events };
+};
 
+export const deleteSuccess = (deleted_id) => {
+    return { type: DELETE_EVENT_SUCCESS, payload: deleted_id }
+}
