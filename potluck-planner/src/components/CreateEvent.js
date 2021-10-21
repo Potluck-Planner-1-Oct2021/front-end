@@ -17,11 +17,15 @@ const initialFormState = {
 
 function CreateEvent() {
 
-  const [disabled, setDisabled] = useState(true)
+  const [disabled, setDisabled] = useState(false)
   const [formToSubmit, setFormToSubmit] = useState(initialFormState)
 
   const submitEvent = () => {
     axiosWithAuth()
+    .post('/potlucks', formToSubmit)
+    .then(res => {
+      console.log(res.data)
+    })
   }
 
   return (
@@ -29,7 +33,7 @@ function CreateEvent() {
         <EventBasics editable={false} setFormToSubmit={setFormToSubmit} formToSubmit={formToSubmit}></EventBasics>
         <CreateFood setFormToSubmit={setFormToSubmit} formToSubmit={formToSubmit}></CreateFood>
         <InviteFriends setFormToSubmit={setFormToSubmit} formToSubmit={formToSubmit}></InviteFriends>
-        <button disabled={disabled}>Submit</button>
+        <button onClick={submitEvent} disabled={disabled}>Submit</button>
     </div>
   );
 }

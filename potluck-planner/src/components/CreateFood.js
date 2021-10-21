@@ -12,8 +12,6 @@ function CreateFood({ formToSubmit, setFormToSubmit }) {
 
   const [food,setFood] = useState(['','',''])
 
-
-  console.log(food)
   const changeFood = (event) => {
     const { name, value} = event.target
     let newState = food.slice()
