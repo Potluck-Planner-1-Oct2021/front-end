@@ -39,8 +39,8 @@ const Home = ({ potlucks, getHostedEvents }) => {
                 {potlucks.map(pl => {
                     return <AllP key={pl.potluck_id}>
                             <p>{pl.potluck_name}</p>
-                            <p>{moment(pl.date).format('MM/DD/YYYY')}</p>
-                            <p>{pl.time}</p>
+                            <p>Date: {moment(pl.date).format('MM/DD/YYYY')}</p>
+                            <p>Time: {moment(pl.time, "HH:mm:ss").format('h:mm a')}</p>
                             <p>{pl.location}</p>
                             </AllP>
                 })}
