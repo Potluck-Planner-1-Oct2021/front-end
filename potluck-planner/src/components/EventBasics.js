@@ -1,4 +1,5 @@
 import React, {  useState } from "react";
+import styled from 'styled-components'
 // import * as yup from 'yup'
 
 // This component shows name, date/time, and location
@@ -12,6 +13,21 @@ import React, {  useState } from "react";
   //   date: yup.string().required('Please let your guets know when your potluck will be'),
   //   location: yup.string().required('Please let your guests know where your potluck will be'),
   // })
+
+
+  
+  const StyledLabel = styled.label`
+  // border: 2px solid blue;
+  `
+  const StyledInput = styled.input`
+    //border: 2px solid green;
+  `
+  const LabelInputDiv = styled.div`
+    display: flex;
+    width: 40%;
+    justify-content: space-between;
+    padding: 1%;
+  `
 
 function EventBasics({ formToSubmit, setFormToSubmit }) {
 
@@ -48,19 +64,25 @@ function EventBasics({ formToSubmit, setFormToSubmit }) {
         {/* <div>{errors.name}</div>
         <div>{errors.date}</div>
         <div>{errors.location}</div> */}
-        <label> Event Name
-            <input onChange={change} value={form.name} name="name" type="text"/>
-        </label>
+        <LabelInputDiv>
+            <StyledLabel> Event Name</StyledLabel>
+            <StyledInput onChange={change} value={form.name} name="name" type="text"/>
+          </LabelInputDiv>
 
-        <label> Date
-          <input onChange={change} value={form.date} name="date" type="date"/>
-        </label> 
-        <label> Time
-          <input onChange={change} value={form.time} name="time" type="time"/>
-        </label> 
-        <label> Location
-          <input onChange={change} value={form.location} name="location" type="text"/>
-        </label>
+        <LabelInputDiv>
+            <StyledLabel> Date</StyledLabel> 
+            <StyledInput onChange={change} value={form.date} name="date" type="date"/>
+        </LabelInputDiv>
+
+        <LabelInputDiv>
+          <StyledLabel> Time</StyledLabel> 
+          <StyledInput onChange={change} value={form.time} name="time" type="time"/>
+        </LabelInputDiv>
+
+        <LabelInputDiv>
+          <StyledLabel> Location</StyledLabel>
+          <StyledInput onChange={change} value={form.location} name="location" type="text"/>
+        </LabelInputDiv>
       </form>
     </div>
   );
