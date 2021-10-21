@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
+import axiosWithAuth from '../utils/axiosWithAuth';
 
 const HomeDiv = styled.div`
     width: 100%;
@@ -19,9 +20,23 @@ const AttendDiv = styled.div`
 const AllP = styled.p`
     border: 1px solid orange;
     padding: 4%;
+    background-color: #105773;
+    color: #f2b441;
 `
 
 export default function Home () {
+
+    useEffect(() => {
+    axiosWithAuth()
+    .get('/potlucks')
+    .then(res => {
+        console.log(res)
+    })
+    .catch(err => {
+        console.log(err)
+    })
+}, [])
+
     return (
         <HomeDiv>
             <StyledP> Events Hosting </StyledP>
